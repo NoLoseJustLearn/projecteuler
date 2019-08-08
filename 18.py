@@ -1,19 +1,20 @@
-#Calculate the score of the path
+# Calculate the score of the path
 def scorePath(path, tree):
     score = 0
     xcoord = 0
-    for i in range(0,len(path)):
+    for i in range(0, len(path)):
         if path[i] == 1:
             xcoord += 1
         score += int(tree[i][xcoord][0])
     print(score)
     return score
 
-#Returns the next path
+
+# Returns the next path
 def nextPath(path):
     path.reverse()
-    for i in range(0,len(path)):
-        if path[i]==0:
+    for i in range(0, len(path)):
+        if path[i] == 0:
             path[i] = 1
             break
         else:
@@ -21,8 +22,9 @@ def nextPath(path):
     path.reverse()
     return path
 
+
 def lastPath(path):
-    for i in range(1,len(path)):
+    for i in range(1, len(path)):
         if path[i] == 0:
             return 0
     return 1
@@ -32,16 +34,16 @@ tree = "75 95 64 17 47 82 18 35 87 10 20 04 82 47 65 19 01 23 75 03 34 88 02 77 
 
 tree = list(tree)
 
-while (tree.count(" ") > 0):
+while tree.count(" ") > 0:
     tree.remove(" ")
 
 rows = 15
 formTree = []
 row = []
 
-#Format tree into matrix
-for i in range(rows+1):
-    for j in range (0,i):
+# Format tree into matrix
+for i in range(rows + 1):
+    for j in range(0, i):
         tempStr = ["".join(tree[0:2])]
         row.append(tempStr)
         del tree[0]
@@ -53,13 +55,13 @@ del formTree[0]
 
 highscore = 0
 
-#Define path list
+# Define path list
 path = []
 for i in range(rows):
     path.append(0)
 
 print(formTree[0][0])
-while(lastPath(path) == 0):
+while lastPath(path) == 0:
     pathScore = scorePath(path, formTree)
     if pathScore > highscore:
         highscore = pathScore
@@ -67,9 +69,3 @@ while(lastPath(path) == 0):
     print(path)
     path = nextPath(path)
 print(highscore)
-
-
-
-
-
-

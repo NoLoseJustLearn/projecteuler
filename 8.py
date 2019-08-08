@@ -1,4 +1,4 @@
-#Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
+# Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 
 
 maxProd = 7
@@ -13,16 +13,16 @@ for i in bigStr:
     bigLst.append(int(i))
 
 for i in range(13):
-    testProd*=bigLst[i]
+    testProd *= bigLst[i]
 maxProd = testProd
 
-for i in range(0,997):
+for i in range(0, 997):
     testProd = 1
     mini = i
-    maxi = 13+i
+    maxi = 13 + i
     for i in range(mini, maxi):
         testProd *= bigLst[i]
-    if testProd>maxProd:
+    if testProd > maxProd:
         maxProd = testProd
         print(maxProd)
 print("Done")
